@@ -3,15 +3,15 @@ using Faker.Parameters;
 
 namespace Faker.TypeGenerators;
 
-public class LongGenerator : IValueGenerator
+public class GuidGenerator : IValueGenerator
 {
     public object Generate(Type typeToGenerate, GeneratorContext context)
     {
-        return context.Random.NextInt64();
+        return new Guid();
     }
 
     public bool CanGenerate(Type type)
     {
-        return type == typeof(long);
+        return type == typeof(Guid);
     }
 }
