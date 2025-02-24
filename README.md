@@ -1,3 +1,4 @@
+# [Задания](https://bsuir.ishimko.me/mpp-dotnet)
 # Lab 1 - Tracer
 ## Инструкция 
 - Скомпилировать приложение
