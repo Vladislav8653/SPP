@@ -21,14 +21,14 @@ public class Faker(FakerConfig? config)
         new TypeIEnumerableGenerator(),
         new TypeIListGenerator(),
     ];
-    
+
     private readonly Random _random = new Random();
-    
+
     public T Create<T>()
     {
-        return (T) Create(typeof(T));
+        return (T)Create(typeof(T));
     }
-    
+
     public object Create(Type t)
     {
         var generator = _generators.FirstOrDefault(g => g.CanGenerate(t));
@@ -36,6 +36,7 @@ public class Faker(FakerConfig? config)
         {
             return CreateCompositeType(t);
         }
+
         return generator.Generate(t, new GeneratorContext(_random, this));
     }
 
@@ -46,7 +47,6 @@ public class Faker(FakerConfig? config)
         {
             try
             {
-
                 var ctrParamsInfo = constructor.GetParameters();
                 var ctrParams = ctrParamsInfo.Select(p => GenerateConstructorParameter(type, p)).ToArray();
                 var instance = constructor.Invoke(ctrParams);
@@ -61,24 +61,26 @@ public class Faker(FakerConfig? config)
 
         return GetDefaultValue(type);
     }
-    
+
     private void InitializePublicMembers(object instance, ParameterInfo[] constructorParameters)
     {
         var type = instance.GetType();
         var parameterNames = new HashSet<string>(
             constructorParameters.Select(p => p.Name)!,
             StringComparer.OrdinalIgnoreCase);
-        
+
         foreach (var prop in type
                      .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                     .Where(p => p.CanWrite 
-                                 && p.SetMethod!.IsPublic 
+                     .Where(p => p.CanWrite
+                                 && p.SetMethod!.IsPublic
                                  && !parameterNames.Contains(p.Name)))
         {
             var generator = config?.GetGenerator(type, prop);
-            var value = generator != null && generator.CanGenerate(prop.PropertyType)
-                ? generator.Generate(prop.PropertyType, new (_random, this))
-                : Create(prop.PropertyType);
+            object value;
+            if (generator != null && generator.CanGenerate(prop.PropertyType))
+                value = generator.Generate(prop.PropertyType, new(_random, this));
+            else
+                value = Create(prop.PropertyType);
             prop.SetValue(instance, value);
         }
 
@@ -87,27 +89,28 @@ public class Faker(FakerConfig? config)
                      .Where(f => !f.IsInitOnly && !parameterNames.Contains(f.Name)))
         {
             var generator = config?.GetGenerator(type, field);
-            var value = generator != null && generator.CanGenerate(field.FieldType)
-                ? generator.Generate(field.FieldType, new(_random, this))
-                : Create(field.FieldType);
+            object value;
+            if (generator != null && generator.CanGenerate(field.FieldType))
+                value = generator.Generate(field.FieldType, new(_random, this));
+            else
+                value = Create(field.FieldType);
             field.SetValue(instance, value);
         }
     }
 
-    
+
     private object GenerateConstructorParameter(Type t, ParameterInfo constructorparameter)
     {
-     
-        // Сначала пытаемся найти член по имени параметра
-        var memberByName = FindMemberForparameter(t, constructorparameter);
+        
+        var memberByName = FindMemberForParameter(t, constructorparameter);
         if (memberByName != null)
         {
             var generator = config?.GetGenerator(t, memberByName);
             if (generator != null && generator.CanGenerate(constructorparameter.ParameterType))
-                return generator.Generate(constructorparameter.ParameterType, new (_random, this));
+                return generator.Generate(constructorparameter.ParameterType, new(_random, this));
         }
         
-        // Если не нашли по имени, ищем любой член с таким же типом
+        
         var membersByType = t.GetMembers(BindingFlags.Public | BindingFlags.Instance)
             .Where(m => m is PropertyInfo or FieldInfo)
             .Where(m => GetMemberType(m) == constructorparameter.ParameterType);
@@ -118,11 +121,11 @@ public class Faker(FakerConfig? config)
             if (generator != null && generator.CanGenerate(constructorparameter.ParameterType))
                 return generator.Generate(constructorparameter.ParameterType, new GeneratorContext(_random, this));
         }
+
         
-        // Если ничего не нашли, создаём стандартным образом
         return Create(constructorparameter.ParameterType);
-        
-        static MemberInfo? FindMemberForparameter(Type t, ParameterInfo parameter)
+
+        static MemberInfo? FindMemberForParameter(Type t, ParameterInfo parameter)
         {
             var paramName = parameter.Name;
             var paramType = parameter.ParameterType;
@@ -132,10 +135,8 @@ public class Faker(FakerConfig? config)
                 .FirstOrDefault(m =>
                     string.Equals(m.Name, paramName, StringComparison.OrdinalIgnoreCase) &&
                     GetMemberType(m) == paramType);
-        
-            
         }
-        
+
         static Type GetMemberType(MemberInfo member) =>
             member switch
             {
@@ -144,15 +145,14 @@ public class Faker(FakerConfig? config)
                 _ => throw new InvalidOperationException()
             };
     }
-    
-    
+
+
     private static object GetDefaultValue(Type t)
     {
-        if (t.IsValueType)
+        return t.IsValueType ?
             // Для типов-значений вызов конструктора по умолчанию даст default(T).
-            return Activator.CreateInstance(t)!;
-        else
+            Activator.CreateInstance(t)! :
             // Для ссылочных типов значение по умолчанию всегда null.
-            return null!;
+            null!;
     }
 }
