@@ -1,4 +1,4 @@
-﻿namespace Faker.Implementation;
+﻿namespace Faker.Core.Implementation;
 
 public class Faker 
 {

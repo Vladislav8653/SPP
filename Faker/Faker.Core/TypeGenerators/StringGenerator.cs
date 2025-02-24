@@ -1,6 +1,6 @@
 ﻿using System.Text;
 using Faker.Contracts;
-using Faker.Parameters;
+using Faker.Core.Parameters;
 
 namespace Faker.TypeGenerators;
 
