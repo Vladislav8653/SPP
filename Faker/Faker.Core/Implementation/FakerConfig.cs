@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
-using Faker.Contracts;
+using Faker.Core.Contracts;
 
 namespace Faker.Core.Implementation;
 

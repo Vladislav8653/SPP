@@ -1,4 +1,4 @@
-﻿using Faker.Contracts;
+﻿using Faker.Core.Contracts;
 using Faker.Core.Parameters;
 
 namespace Faker.TypeGenerators;

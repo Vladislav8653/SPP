@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Faker.Contracts;
+using Faker.Core.Contracts;
 using Faker.Core.Parameters;
 using Faker.TypeGenerators;
 
