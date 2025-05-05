@@ -1,48 +1,56 @@
-﻿using TestsGenerator.Library;
+﻿using TestsGenerator.Core;
 
-Console.WriteLine("Enter your path to directory with *.cs files: ");
-string inputFolder = Console.ReadLine()!;
+Console.WriteLine("Укажите путь к папке с исходными .cs файлами:");
+var sourceDir = Console.ReadLine();
 
-if (string.IsNullOrWhiteSpace(inputFolder) || !Directory.Exists(inputFolder))
+if (string.IsNullOrWhiteSpace(sourceDir) || !Directory.Exists(sourceDir))
 {
-    Console.WriteLine("Error: input folder doesn't exist.");
-    PauseAndExit();
+    ShowErrorAndExit("Папка с исходниками не найдена.");
     return;
 }
 
-Console.WriteLine("Enter your path to output directory: ");
-string outputFolder = Console.ReadLine()!;
+Console.WriteLine("Куда сохранить сгенерированные тесты? Введите путь к выходной директории:");
+var destDir = Console.ReadLine();
 
-if (string.IsNullOrWhiteSpace(outputFolder))
+if (string.IsNullOrWhiteSpace(destDir))
 {
-    Console.WriteLine("Error: output directory path can't be null or empty.");
-    PauseAndExit();
+    ShowErrorAndExit("Путь к выходной папке не может быть пустым.");
     return;
 }
 
-if (!Directory.Exists(outputFolder))
+if (!Directory.Exists(destDir))
 {
-    Directory.CreateDirectory(outputFolder);
+    Directory.CreateDirectory(destDir);
+    Console.WriteLine($"Создана новая директория: {destDir}");
 }
 
-var inputFiles = Directory.GetFiles(inputFolder, "*.cs", SearchOption.AllDirectories);
-if (inputFiles.Length == 0)
+var csFiles = Directory.EnumerateFiles(sourceDir, "*.cs", SearchOption.AllDirectories).ToArray();
+if (csFiles.Length == 0)
 {
-    Console.WriteLine("No input files found.");
-    Console.ReadKey();
+    Console.WriteLine("В указанной папке не найдено ни одного .cs файла.");
+    WaitAndClose();
     return;
 }
 
-Console.WriteLine($"{inputFiles.Length} files were found! Start generating tests...");
+Console.WriteLine($"Обнаружено файлов: {csFiles.Length}. Запуск генерации тестов...");
 
-var generator = new TestGenerator();
-await generator.GenerateTestsAsync(inputFiles, outputFolder);
+var testGen = new TestGenerator();
+await testGen.GenerateTestsAsync(csFiles, destDir);
 
-Console.WriteLine("Test generation completed.");
-Console.ReadKey();
+Console.WriteLine("Генерация тестовых файлов завершена успешно!");
+WaitAndClose();
+return;
 
-static void PauseAndExit()
+static void ShowErrorAndExit(string message)
 {
-    Console.WriteLine("Enter any key to exit...");
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine(message);
+    Console.ResetColor();
+    WaitAndClose();
+}
+
+static void WaitAndClose()
+{
+    Console.WriteLine("Нажмите любую клавишу для выхода...");
     Console.ReadKey();
 }

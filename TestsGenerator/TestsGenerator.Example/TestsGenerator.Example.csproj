@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TestsGenerator.Library\TestsGenerator.Library.csproj" />
+      <ProjectReference Include="..\TestsGenerator.Core\TestsGenerator.Core.csproj" />
     </ItemGroup>
 
 </Project>

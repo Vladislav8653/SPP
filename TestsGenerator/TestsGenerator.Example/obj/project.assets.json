@@ -163,17 +163,17 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "TestsGenerator.Library/1.0.0": {
+      "TestsGenerator.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp": "4.12.0"
         },
         "compile": {
-          "bin/placeholder/TestsGenerator.Library.dll": {}
+          "bin/placeholder/TestsGenerator.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/TestsGenerator.Library.dll": {}
+          "bin/placeholder/TestsGenerator.Core.dll": {}
         }
       }
     }
@@ -962,15 +962,15 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "TestsGenerator.Library/1.0.0": {
+    "TestsGenerator.Core/1.0.0": {
       "type": "project",
-      "path": "../TestsGenerator.Library/TestsGenerator.Library.csproj",
-      "msbuildProject": "../TestsGenerator.Library/TestsGenerator.Library.csproj"
+      "path": "../TestsGenerator.Core/TestsGenerator.Core.csproj",
+      "msbuildProject": "../TestsGenerator.Core/TestsGenerator.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "TestsGenerator.Library >= 1.0.0"
+      "TestsGenerator.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -998,8 +998,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\study\\6_semestr\\spp\\TestsGenerator\\TestsGenerator.Library\\TestsGenerator.Library.csproj": {
-              "projectPath": "D:\\study\\6_semestr\\spp\\TestsGenerator\\TestsGenerator.Library\\TestsGenerator.Library.csproj"
+            "D:\\study\\6_semestr\\spp\\TestsGenerator\\TestsGenerator.Core\\TestsGenerator.Core.csproj": {
+              "projectPath": "D:\\study\\6_semestr\\spp\\TestsGenerator\\TestsGenerator.Core\\TestsGenerator.Core.csproj"
             }
           }
         }

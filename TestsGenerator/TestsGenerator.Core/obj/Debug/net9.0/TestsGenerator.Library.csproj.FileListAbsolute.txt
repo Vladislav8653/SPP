@@ -1,0 +1,26 @@
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\bin\Debug\net9.0\TestsGenerator.Library.deps.json
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\bin\Debug\net9.0\TestsGenerator.Library.dll
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\bin\Debug\net9.0\TestsGenerator.Library.pdb
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.csproj.AssemblyReference.cache
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.GeneratedMSBuildEditorConfig.editorconfig
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.AssemblyInfoInputs.cache
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.AssemblyInfo.cs
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.csproj.CoreCompileInputs.cache
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.sourcelink.json
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.dll
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\refint\TestsGenerator.Library.dll
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.pdb
+D:\study\6_semestr\BSUIR-labs-krutoy-andrey\3 course\6 semester\Modern programming platforms\MPP_4\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\ref\TestsGenerator.Library.dll
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\bin\Debug\net9.0\TestsGenerator.Library.deps.json
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\bin\Debug\net9.0\TestsGenerator.Library.dll
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\bin\Debug\net9.0\TestsGenerator.Library.pdb
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.csproj.AssemblyReference.cache
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.GeneratedMSBuildEditorConfig.editorconfig
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.AssemblyInfoInputs.cache
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.AssemblyInfo.cs
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.csproj.CoreCompileInputs.cache
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.sourcelink.json
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.dll
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\refint\TestsGenerator.Library.dll
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\TestsGenerator.Library.pdb
+D:\study\6_semestr\spp\TestsGenerator\TestsGenerator.Library\obj\Debug\net9.0\ref\TestsGenerator.Library.dll
