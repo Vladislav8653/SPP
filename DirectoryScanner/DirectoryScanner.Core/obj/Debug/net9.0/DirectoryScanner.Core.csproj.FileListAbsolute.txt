@@ -1,0 +1,12 @@
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\bin\Debug\net9.0\DirectoryScanner.Core.deps.json
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\bin\Debug\net9.0\DirectoryScanner.Core.dll
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\bin\Debug\net9.0\DirectoryScanner.Core.pdb
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\obj\Debug\net9.0\DirectoryScanner.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\obj\Debug\net9.0\DirectoryScanner.Core.AssemblyInfoInputs.cache
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\obj\Debug\net9.0\DirectoryScanner.Core.AssemblyInfo.cs
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\obj\Debug\net9.0\DirectoryScanner.Core.csproj.CoreCompileInputs.cache
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\obj\Debug\net9.0\DirectoryScanner.Core.sourcelink.json
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\obj\Debug\net9.0\DirectoryScanner.Core.dll
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\obj\Debug\net9.0\refint\DirectoryScanner.Core.dll
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\obj\Debug\net9.0\DirectoryScanner.Core.pdb
+D:\study\6_semestr\spp\DirectoryScanner\DirectoryScanner.Core\obj\Debug\net9.0\ref\DirectoryScanner.Core.dll
