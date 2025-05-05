@@ -1,0 +1,12 @@
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\bin\Debug\net9.0\StringFormatter.Core.deps.json
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\bin\Debug\net9.0\StringFormatter.Core.dll
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\bin\Debug\net9.0\StringFormatter.Core.pdb
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\obj\Debug\net9.0\StringFormatter.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\obj\Debug\net9.0\StringFormatter.Core.AssemblyInfoInputs.cache
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\obj\Debug\net9.0\StringFormatter.Core.AssemblyInfo.cs
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\obj\Debug\net9.0\StringFormatter.Core.csproj.CoreCompileInputs.cache
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\obj\Debug\net9.0\StringFormatter.Core.sourcelink.json
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\obj\Debug\net9.0\StringFormatter.Core.dll
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\obj\Debug\net9.0\refint\StringFormatter.Core.dll
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\obj\Debug\net9.0\StringFormatter.Core.pdb
+D:\study\6_semestr\spp\StringFormatter\StringFormatter.Core\obj\Debug\net9.0\ref\StringFormatter.Core.dll

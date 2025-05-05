@@ -5,7 +5,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace TestsGenerator.Core;
 
-public class TestGenerator(int maxFileRead, int maxTestGeneration, int maxFileWrite)
+public class TestGenerator(int readLimit, int testGenLimit, int writeLimit)
 {
     public TestGenerator() : this(Environment.ProcessorCount, 
         Environment.ProcessorCount, Environment.ProcessorCount) { }
@@ -18,25 +18,24 @@ public class TestGenerator(int maxFileRead, int maxTestGeneration, int maxFileWr
         {
             var content = await File.ReadAllTextAsync(filePath);
             return new FileContent { FilePath = filePath, Content = content };
-        }, new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = maxFileRead });
+        }, new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = readLimit });
 
 
         var generateBlock = new TransformManyBlock<FileContent, TestFile>(
             input => GenerateTestFiles(input.Content), 
-            new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = maxTestGeneration });
+            new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = testGenLimit });
 
         
         var writeBlock = new ActionBlock<TestFile>(async testFile =>
             {
                 await File.WriteAllTextAsync(Path.Combine(outputFolder, testFile.FileName), testFile.Content);
             },
-            new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = maxFileWrite });
+            new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = writeLimit });
 
         var linkOptions = new DataflowLinkOptions { PropagateCompletion = true };
         readBlock.LinkTo(generateBlock, linkOptions);
         generateBlock.LinkTo(writeBlock, linkOptions);
-
-        // Запускаем конвейер – отправляем имена файлов в первый блок.
+        
         foreach (var файлик in inputFiles)
         {
             readBlock.Post(файлик);

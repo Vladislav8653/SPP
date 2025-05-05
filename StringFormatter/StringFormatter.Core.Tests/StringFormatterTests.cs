@@ -3,122 +3,118 @@
 public class StringFormatterTests
 {
     private readonly StringFormatter _formatter = new();
-    
+
     private class TestClass
     {
-        public string Name { get; set; } = "Alice";
-        public int Age { get; set; } = 25;
-        public NestedClass Nested { get; set; } = new();
-
-        public int[] Array { get; set; } = [1, 2, 3];
-        public int[][] ArrayNested { get; set; } = [[1, 2, 3]];
-
-        public int FieldValue = 2;
-    }
-    
-    private class NestedClass
-    {
-        public string Value { get; set; } = "NestedValue";
     }
 
     [Fact]
-    public void Format_ShouldReplace_PlaceholdersWithValues()
+    public void Format_Replaces_SimpleProperties()
     {
         var obj = new TestClass();
-        string template = "Hello, {Name}! You are {Age} years old.";
-        string result = _formatter.Format(template, obj);
-        
-        Assert.Equal("Hello, Alice! You are 25 years old.", result);
+        var template = "Name: {Name}, Age: {Age}";
+        var result = _formatter.Format(template, obj);
+
+        Assert.Equal("Name: Bob, Age: 42", result);
     }
 
     [Fact]
-    public void Format_ShouldHandle_NestedProperties()
+    public void Format_Handles_NestedProperties()
     {
         var obj = new TestClass();
-        string template = "Nested value: {Nested.Value}";
-        string result = _formatter.Format(template, obj);
-        
-        Assert.Equal("Nested value: NestedValue", result);
+        var template = "Nested: {Nested.Info}";
+        var result = _formatter.Format(template, obj);
+
+        Assert.Equal("Nested: Deep", result);
     }
 
     [Fact]
-    public void Format_ShouldHandle_ArrayValues()
+    public void Format_Handles_ArrayIndexing()
     {
         var obj = new TestClass();
-        string template = "Array[0] value: {Array[0]}";
-        string result = _formatter.Format(template, obj);
-        
-        Assert.Equal("Array[0] value: 1", result);
+        var template = "First: {Numbers[0]}, Second: {Numbers[1]}";
+        var result = _formatter.Format(template, obj);
+
+        Assert.Equal("First: 10, Second: 20", result);
     }
-    
+
     [Fact]
-    public void Format_ShouldHandle_ArrayNestedValues()
+    public void Format_Handles_ListIndexing()
     {
         var obj = new TestClass();
-        string template = "ArrayNested[0][0] value: {ArrayNested[0][0]}";
-        string result = _formatter.Format(template, obj);
-        
-        Assert.Equal("ArrayNested[0][0] value: 1", result);
+        var template = "Word: {Words[1]}";
+        var result = _formatter.Format(template, obj);
+
+        Assert.Equal("Word: bar", result);
     }
-    
+
     [Fact]
-    public void Format_ShouldThrow_ForInvalidIndex()
+    public void Format_Handles_MultidimensionalIndexing()
     {
         var obj = new TestClass();
-        string template = "Array[0][0] value: {Array[0][0]}";
-        
-        Assert.Throws<FormatException>(() => _formatter.Format(template, obj));
+        var template = "Matrix[1][0]: {Matrix[1][0]}";
+        var result = _formatter.Format(template, obj);
+
+        Assert.Equal("Matrix[1][0]: 3", result);
     }
-    
+
     [Fact]
-    public void Format_ShouldThrow_ForFieldValues()
+    public void Format_Returns_EmptyString_ForNullProperty()
     {
         var obj = new TestClass();
-        
-        string template = "FieldValue value: {FieldValue}";
-        
+        var template = "Null: {NullProp}";
+        var result = _formatter.Format(template, obj);
+
+        Assert.Equal("Null: ", result);
+    }
+
+    [Fact]
+    public void Format_Throws_For_FieldAccess()
+    {
+        var obj = new TestClass();
+        var template = "Field: {FieldValue}";
+
         Assert.Throws<FormatException>(() => _formatter.Format(template, obj));
     }
 
     [Fact]
-    public void Format_ShouldThrow_ForUnbalancedBraces()
+    public void Format_Throws_For_InvalidIndexing()
     {
         var obj = new TestClass();
-        string template1 = "Hello {Name";
-        string template2 = "Hello }Name{";
-        
+        var template = "Invalid: {Age[0]}";
+
+        Assert.Throws<FormatException>(() => _formatter.Format(template, obj));
+    }
+
+    [Fact]
+    public void Format_Throws_For_PropertyNotFound()
+    {
+        var obj = new TestClass();
+        var template = "Nope: {DoesNotExist}";
+
+        Assert.Throws<FormatException>(() => _formatter.Format(template, obj));
+    }
+
+    [Fact]
+    public void Format_Throws_For_UnbalancedBraces()
+    {
+        var obj = new TestClass();
+        var template1 = "Oops {Name";
+        var template2 = "Oops }Name{";
+
         Assert.Throws<FormatException>(() => _formatter.Format(template1, obj));
         Assert.Throws<FormatException>(() => _formatter.Format(template2, obj));
     }
 
     [Fact]
-    public void Format_ShouldHandle_EscapedBraces()
+    public void Format_Throws_If_TargetIsNull()
     {
-        var obj = new TestClass();
-        string template = "{{Hello}} {Name}";
-        string result = _formatter.Format(template, obj);
-        
-        Assert.Equal("{Hello} Alice", result);
-    }
-
-    [Fact]
-    public void Format_ShouldThrow_IfPropertyNotFound()
-    {
-        var obj = new TestClass();
-        string template = "{NonExistent}";
-        
-        Assert.Throws<FormatException>(() => _formatter.Format(template, obj));
-    }
-
-    [Fact]
-    public void Format_ShouldThrow_IfTargetIsNull()
-    {
-        string template = "{Name}";
+        var template = "{Name}";
         Assert.Throws<ArgumentNullException>(() => _formatter.Format(template, null!));
     }
 
     [Fact]
-    public void Format_ShouldThrow_IfTemplateIsNull()
+    public void Format_Throws_If_TemplateIsNull()
     {
         var obj = new TestClass();
         Assert.Throws<ArgumentNullException>(() => _formatter.Format(null!, obj));
